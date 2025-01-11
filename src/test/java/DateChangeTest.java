@@ -1,24 +1,14 @@
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
-
-import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class DateChangeTest {
-    static String locale;
-
-    @BeforeAll
-    static void setUp() {
-        locale = "ru";
-        Configuration.browser = "chrome";
-    }
+    static String locale = "ru";
 
     @BeforeEach
     void open() {
@@ -27,7 +17,7 @@ public class DateChangeTest {
 
     @Test
     public void sendFormAndChangeDate() {
-        var gen = new GenerateData();
+        var gen = new DataGenerator();
         String firstDate = gen.generateDate(5);
         String secondDate = gen.generateDate(8);
 
