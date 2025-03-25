@@ -54,14 +54,6 @@ public class DateChangeTest {
 
         $$("button").findBy(Condition.text("Запланировать")).click(); // Запланировать
 
-        while ($("[data-test-id='city']").has(Condition.cssClass("input_invalid"))) {
-            var newUser = DataGenerator.Registration.generateUser(locale);
-            $("[data-test-id='city'] .input__control").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME),
-                    Keys.BACK_SPACE);
-            $("[data-test-id='city'] [type='text']").setValue(newUser.getCity());
-            $$("button").findBy(Condition.text("Запланировать")).click();
-        }
-
         $("[data-test-id='success-notification']").shouldBe(Condition.visible).
                 shouldHave(Condition.text("Встреча успешно запланирована на " + firstDate),
                         Condition.text("Успешно!")); // первое уведомление
